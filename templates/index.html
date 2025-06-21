@@ -1,0 +1,10 @@
+{# templates/index.html #}
+
+{% extends "base.html" %}
+
+{% include 'partials/filter.html' %}
+
+{% block body %}
+    {%include 'partials/cards.html'%}
+
+{% endblock %}

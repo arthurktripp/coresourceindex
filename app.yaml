@@ -1,0 +1,10 @@
+runtime: python312
+
+entrypoint: gunicorn -b :$PORT main:app  # Change 'main' to your filename (without .py) and 'app' to your Flask app name
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto

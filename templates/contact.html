@@ -1,0 +1,44 @@
+{# templates/contact.html #}
+
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card shadow page-title">
+    <h1>Contact CORI</h1>
+    </div>
+    
+
+<div id="contact-main" class="card shadow ">
+    <p>Have we missed a great Central Oregon service? Did you find a broken link or incorrect information? Please let us know here.</p>
+    
+    
+    {% if name %}
+    <p>Thank you for contacting us, {{ name }}. We'll get back to you as soon as possible.</p>
+    {% else %}
+    
+    <form method='POST' id='contact-form'>
+        {{ form.hidden_tag() }}
+
+        {{ form.website.label}}<br>
+        {{ form.website(aria_label="This field should be left blank", class_='potofhoney', autocomplete='off', tabindex='-1')}}
+        
+        {{ form.name.label }}<br>
+        {{ form.name() }}<br>
+
+        {{ form.email.label }}<br>
+        {{ form.email() }}<br>
+
+        {{ form.message.label }}<br>
+        {{ form.message() }}<br>
+
+        {{ form.submit(id='contact-submit', disabled=True, class_='inactive-button') }}
+
+    </form>
+    {% endif %}
+</div>
+
+<div class='card shadow'>
+    <p>While donations to keep this site running are accepted <a href='https://account.venmo.com/u/ArthurKTripp' target='_blank'>here</a>, you are encouraged to donate to the listed organizations first.</p>
+</div>
+
+{% endblock %}

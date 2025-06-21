@@ -1,0 +1,35 @@
+{# partials/filter.html #}
+<div id="translucent"></div>
+
+<section aria-label="Filter for directory results">
+<div id="filter" class="filter shadow card">
+    <div id="close-filter"><a href="#">&#9447</a></div>
+    <form action="/" id="filter-form">
+        
+        <label for="categories">Categories:</label><br>
+        <select name="cat" id="categories">
+            <option value="0" {% if not cat %}selected{% endif %}>All</option>
+            {% for category in categories %}
+                <option value='{{ category.id }}' {% if cat == category.id %}selected{% endif %}>
+                {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <span>Locations:</span><br>
+        <input type="checkbox" id="all-cities" name="cit" value="1" {% if 1 in cit %}checked{% endif %}>
+        <label id="all-city-checkbox" for="all-cities">All</label>
+        {% for city in cities %}
+        <br><input type="checkbox" id="{{city.id}}" name="cit" value="{{city.id}}" {% if city.id in cit or 1 in cit %}checked{% endif %}>
+        <label for="{{city.id}}">{{city.name}}</label>
+        {% endfor %}
+        <br><br>
+        <input type="submit" id="filterSubmit">
+    </form>
+</div>
+
+<div id="show-filter">
+    <a href="#">Filter Results</a>
+</div>
+</section>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/cards.css">
+    <link rel="stylesheet" href="/static/css/filter.css">
+    <script src="/static/js/filter.js"></script>
+    <script src="/static/js/contact.js"></script>
+    <title>{{title}}</title>
+    <script data-goatcounter="https://coresourceindex.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+
+    <header class="shadow-down">
+        {% include 'partials/nav.html' %}
+    </header>
+
+    <main>
+        {% block body %} {% endblock %}
+    </main>
+
+    <footer>
+        {% include 'partials/footer.html' %}
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href^="http"]').forEach(function (link) {
+            if (!link.href.includes(location.hostname)) {
+                link.addEventListener('click', function () {
+                if (window.goatcounter) {
+                    goatcounter.count({
+                    path: 'outbound/' + link.href,
+                    title: 'Outbound Link',
+                    event: true
+                    });
+                }
+                });
+            }
+            });
+        });
+    </script>
+</body>
+
+</html>

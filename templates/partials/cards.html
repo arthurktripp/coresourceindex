@@ -1,0 +1,97 @@
+{# partials/cards.hmtl #}
+<div class="card shadow page-title">
+<h1>Resources & Non-Profits</h1>
+</div>
+
+{% for service in services %}
+<div class="card shadow">
+  <div class="card-item card-name">
+    <div>
+    <h2 class="card-title">{{service['name']}}</h2>
+    <div class="card-cats">
+    <ul class="flag-list">
+        <li>Category:</li>
+      {% for category in service['categories'] %}
+        <li>{{category}}</li>
+      {% endfor %}
+    </ul>
+    <ul class="flag-list">
+        <li>Cities:</li>
+      {% for city in service['cities'] %}
+        <li>{{city}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+    </div>
+    
+    <div class="card-item card-logo">
+    {% if service['icon_filename']%}
+        <img
+        src="https://storage.cloud.google.com/central-oregon-action-network.appspot.com/{{service['icon_filename']}}"
+        alt="Business logo of {{service['name']}}"></div>
+    {% else %}
+        <div width="50px"></div>
+    {% endif %}
+  </div>
+  
+  
+  <div class="card-item card-desc">
+    <p>{{service['description']}}</p>
+  </div>
+  <div class="card-item card-buttons">
+    {% if service['url_website'] %}
+      <a href="{{service['url_website']}}" target="_blank">Website</a> 
+    {% endif %}
+    {# {% if service['url_donate'] %}
+      <a href="{{service['url_donate']}}" target="_blank">Donate</a><br>
+    {% endif %} #}
+    {% if service['url_find_services'] %}
+      <a href="{{service['url_find_services']}}" target="_blank">Find Services</a><br>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+
+{% if total_count > 0 %}
+  <div class="card shadow pagination">
+    <div class="card-item card-buttons" id="previous">
+      {% if offset // limit > 0 %}
+        <a href="/?limit={{limit}}&offset={{offset - limit}}&cat={{cat}}{% for city in cit %}&cit={{city}}{%endfor%}">
+        Previous
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="card-item" id="results-position">
+      Showing Results {{ offset + 1 }} - {% if offset + limit < total_count %} {{ offset + limit }} {% else %} {{ total_count }} {% endif %} of {{ total_count }}<br>
+      Page {{ offset // limit + 1 }} of {{ (total_count / limit)|round(0, 'ceil')|int }}
+    </div>
+    <div class="card-item card-buttons" id="next">
+      {% if (offset // limit + 1) < (total_count / limit)|round(0, 'ceil')|int %}
+        <a href="/?limit={{limit}}&offset={{offset + limit}}&cat={{cat}}{% for city in cit %}&cit={{city}}{%endfor%}">
+        Next
+      </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% if not services and not splash %}
+  <div class="card shadow no-results">
+    <div class="card-item card-name"><h2 class="card-title">No Results Found</h2></div>
+    <div class="card-item card-buttons">
+        <a href="/">Reset Filters?</a>
+    </div>
+  </div>
+{% endif %}
+
+{% if splash %}
+  <div class="card shadow">
+    <p>
+      CORI (Central Oregon Resource Index) is a community-driven directory that makes it easier to find and connect with essential local services.
+    </p>
+    <p>
+      Use the filter to find organizations that serve your area and needs.
+    </p>
+  </div>
+{% endif %}

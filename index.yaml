@@ -1,0 +1,16 @@
+indexes:
+- kind: services
+  properties:
+  - name: categories
+  - name: cities
+  - name: name
+
+- kind: services
+  properties:
+  - name: categories
+  - name: name
+
+- kind: services
+  properties:
+  - name: cities
+  - name: name

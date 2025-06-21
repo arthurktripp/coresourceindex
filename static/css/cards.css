@@ -1,0 +1,180 @@
+/* Layout: */
+div.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+div.card-item {
+  margin: 1em;
+}
+
+div.card-name {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+div.card-logo {
+  width: 30%;
+}
+
+
+/* STYLE */
+div.card {
+  background-color: var(--light);
+  width: 100%;
+  max-width: 800px;
+  padding: 3em;
+  border-radius: 0px;
+  margin: 25px;
+}
+
+h2.card-title {
+  text-transform: uppercase;
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div.card-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 175px;
+}
+
+div.card-logo img {
+  max-width: 100%;
+}
+
+div.card-name {
+  display: flex;
+  align-items: center;
+  background-color: var(--light);
+  border-radius: 0px;
+}
+div.card-name h2 {
+  bottom: 5px;
+  color: var(--black);
+}
+
+ul.flag-list {
+  padding: 0;
+  margin:0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  gap: 5px;
+}
+
+ul.flag-list li {
+  list-style: none;
+  padding: 3px 10px;
+  margin-top: 5px;
+  height: 100%;
+  font-size: 1em;
+  color: #fff;
+  background-color: var(--black);
+  border-radius: 0px;
+  align-self: center;
+}
+ ul.flag-list li:first-child {
+  background-color: var(--blue);
+}
+
+div.card-buttons {
+  display: flex;
+  gap: .5em;
+  flex-flow: wrap;
+  text-align: center;
+}
+
+div.card-buttons a {
+  background-color: var(--olive);
+  color: var(--black);
+  font-family: "Figtree";
+  font-size: 1.5em;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  border-radius: 0px;
+  padding: .4em 1.3em;
+  transition: 0.3s;
+}
+
+div.card-buttons a:hover {
+  background-color: var(--olive-dark);
+}
+div.card-buttons a:active {
+  background-color: var(--green);
+}
+
+div.no-results {
+  display: block;
+}
+div.no-results h2 {
+  margin-bottom: 1em;
+}
+
+div.pagination {
+  justify-content: space-between;
+}
+div.pagination .card-buttons a {
+  font-size: 1em;
+  padding: 1em;
+}
+#results-position {
+  text-align: center;
+}
+
+div.page-title {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/* --------------------------------- */
+/* -- Medium & Small Screen Sizes -- */
+/* --------------------------------- */
+
+@media only screen and (max-width: 1399px) {
+  main {
+    width: 75%;
+    margin: unset;
+    margin-top: 8em;
+    margin-bottom: 0px;
+  }
+}
+
+
+@media only screen and (max-width:900px) {
+  div.card-logo {
+    display: none;
+  }
+  div.card-name h2.card-title,
+  h1 {
+    font-size: calc(2rem + ((1vw - 0.28em) * 1.0417));
+    margin-bottom: .5em;
+  }
+  div.card p {
+    font-size: 18px;
+  }
+  div.card {
+    padding: 1em;
+  }
+  
+  /* Pagination elements */
+  #previous {
+    order: 1;
+  }
+  #next {
+    order: 2;
+  }
+  #results-position {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
